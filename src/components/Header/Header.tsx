@@ -69,6 +69,7 @@ const Header = () => {
           />
         </div>
       </div>
+      <div className="split-line"></div>
     </header>
   );
 };
