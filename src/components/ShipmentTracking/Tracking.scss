@@ -28,6 +28,8 @@
         }
         .text {
           font-weight: 700;
+          justify-self: start;
+          align-self: flex-end;
         }
         .sub-text {
           color: #979797;
@@ -51,6 +53,7 @@
       width: 100%;
       flex-direction: column;
       .tracking-line {
+        position: relative;
         width: 100%;
         align-self: flex-end;
         display: flex;
@@ -68,14 +71,30 @@
           height: 10px;
           border-radius: 2px;
         }
-        .mini-line {
-          height: 10px;
-          border-radius: 2px;
+
+        .first-mark,
+        .second-mark,
+        .third-mark,
+        .van-image,
+        .save-image {
+          position: absolute;
+        }
+        .first-mark {
+          right: -1%;
+        }
+
+        .second-mark {
+          right: 25%;
+        }
+
+        .third-mark,
+        .van-image {
+          right: 45%;
         }
       }
       .shipment-text {
         align-self: flex-end;
-        margin-top: 15px;
+        margin-top: 25px;
         font-weight: 700;
         font-size: 12px;
       }
