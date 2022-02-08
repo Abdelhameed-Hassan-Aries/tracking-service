@@ -1,3 +1,5 @@
+@import "src/mixins";
+
 header {
   .header-container {
     display: flex;
@@ -49,7 +51,19 @@ header {
     }
   }
 
-  .split-line {
-    border-top: 1px solid #b9b9b9;
+  @include screen("xs") {
+    display: none;
+  }
+
+  @include screen("small") {
+    display: none;
+  }
+
+  @include screen("medium") {
+    display: none;
+  }
+
+  @include screen("lg") {
+    display: none;
   }
 }
