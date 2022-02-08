@@ -15,8 +15,8 @@ const ShipmentTracking: React.FC<Props> = ({shipmentData}) => {
         <Tracking shipmentData={shipmentData} />
       </div>
       <div className="details-addres-comp">
-        <Details />
-        <Address />
+        <Address shipmentData={shipmentData} />
+        <Details shipmentData={shipmentData} />
       </div>
     </div>
   );

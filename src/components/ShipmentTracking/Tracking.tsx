@@ -56,8 +56,6 @@ const shuttleVan = (
 const save = <FontAwesomeIcon icon={faSave} color="white" size="lg" />;
 
 const Tracking: React.FC<Props> = ({shipmentData}) => {
-  console.log('shipmentData comp', shipmentData);
-
   const {
     CurrentStatus: {state},
   } = shipmentData;

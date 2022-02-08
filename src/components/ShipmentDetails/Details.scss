@@ -1,2 +1,37 @@
 .details {
+  width: 100%;
+  .details-text {
+    text-align: end;
+  }
+  .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    width: 100%;
+
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+
+    thead {
+      text-align: center;
+      tr {
+        background-color: #9797971f;
+        color: rgba(0, 0, 0, 0.438);
+        font-weight: bold;
+      }
+    }
+
+    th,
+    td {
+      padding: 12px 15px;
+    }
+
+    tbody {
+      text-align: center;
+
+      tr {
+        border: 2px solid #dddddda2;
+      }
+    }
+  }
 }
