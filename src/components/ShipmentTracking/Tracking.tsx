@@ -24,6 +24,16 @@ const shipmentStateTranslated: any = {
   CANCELED: 'تم إلغاء الشحنة',
 };
 
+const daysNames: any = {
+  Saturday: 'السبت',
+  Sunday: 'الأحد',
+  Monday: 'الاثنين',
+  Tuesday: 'الثلاثاء ',
+  Wednsday: 'الأربعاء',
+  Thursday: 'الخميس ',
+  Friday: 'الجمعة ',
+};
+
 const monthsNames = [
   'يناير',
   'فبراير',
@@ -77,13 +87,24 @@ const Tracking: React.FC<Props> = ({shipmentData}) => {
         new Date(shipmentData.CurrentStatus.timestamp).getMonth() - 1
       ];
     const day = new Date(shipmentData.CurrentStatus.timestamp).getDate();
-    console.log(`${year} ${month} ${day}`);
     return `${year} ${month} ${day}`;
   };
 
-  const getLatestUpdateDate = () => {};
-
-  console.log('?', new Date(shipmentData.CurrentStatus.timestamp));
+  const getLatestUpdateDate = (): any => {
+    const dayName = new Date(
+      shipmentData.CurrentStatus.timestamp,
+    ).toLocaleDateString('en-US', {
+      weekday: 'long',
+    });
+    const time = new Date(
+      shipmentData.CurrentStatus.timestamp,
+    ).toLocaleDateString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    });
+    return `at ${time} ${daysNames[dayName]}`;
+  };
 
   return (
     <div className="tracking">
@@ -103,7 +124,7 @@ const Tracking: React.FC<Props> = ({shipmentData}) => {
           </li>
           <li>
             <div className="sub-text">اخر تحديث</div>
-            <div className="text">shipment canceled</div>
+            <div className="text">{getLatestUpdateDate()}</div>
           </li>
           <li>
             <div className="sub-text">
@@ -167,7 +188,7 @@ const Tracking: React.FC<Props> = ({shipmentData}) => {
               </div>
             )}
           </div>
-          <div className="shipment-text" style={{marginRight: '85px'}}>
+          <div className="shipment-text" style={{alignSelf: 'flex-start'}}>
             الشحنة خرجت للتسليم
           </div>
         </div>
