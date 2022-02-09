@@ -1,5 +1,10 @@
 import './Header.scss';
+import {useState} from 'react';
 import {NavLink} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
+
+const bars = <FontAwesomeIcon icon={faBars} color="red" size="lg" />;
 
 const Header = () => {
   const rightNavElements = [
@@ -32,35 +37,55 @@ const Header = () => {
       routeName: 'تتبع شحنتك',
     },
   ];
+
+  const [openNav, setOpenNav] = useState(false);
+
+  const openNavBar = () => {
+    setOpenNav(!openNav);
+  };
+
   return (
     <header>
       <div className="header-container">
-        <div className="left-nav-container">
-          <div className="lang-selector">ENG</div>
-          <ul>
-            {leftNavElements.map((navElement, i) => {
-              return (
-                <li key={i}>
-                  <NavLink to={navElement.to} className={navElement.className}>
-                    {navElement.routeName}
-                  </NavLink>
-                </li>
-              );
-            })}
-          </ul>
+        <div className="bars-menu" onClick={openNavBar}>
+          {bars}
         </div>
-        <div className="right-nav-container">
-          <ul>
-            {rightNavElements.map((navElement, i) => {
-              return (
-                <li key={i}>
-                  <NavLink to={navElement.to} className={navElement.className}>
-                    {navElement.routeName}
-                  </NavLink>
-                </li>
-              );
-            })}
-          </ul>
+        <div className={`left-right-container ${openNav ? 'open-nav' : ''}`}>
+          <div className="left-nav-container">
+            <div className="lang-selector">ENG</div>
+            <ul>
+              {leftNavElements.map((navElement, i) => {
+                return (
+                  <li key={i}>
+                    <NavLink
+                      to={navElement.to}
+                      className={navElement.className}
+                      onClick={() => setOpenNav(false)}
+                    >
+                      {navElement.routeName}
+                    </NavLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="right-nav-container">
+            <ul>
+              {rightNavElements.map((navElement, i) => {
+                return (
+                  <li key={i}>
+                    <NavLink
+                      to={navElement.to}
+                      className={navElement.className}
+                      onClick={() => setOpenNav(false)}
+                    >
+                      {navElement.routeName}
+                    </NavLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
         <div className="img-container">
           <img

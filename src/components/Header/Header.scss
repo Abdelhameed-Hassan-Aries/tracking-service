@@ -2,10 +2,14 @@
 
 header {
   .header-container {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .img-container {
+      display: flex;
+      align-items: center;
       img {
         margin: 20px 10px;
         width: 100px;
@@ -13,57 +17,100 @@ header {
       }
     }
 
-    .left-nav-container,
-    .right-nav-container {
-      ul {
-        display: flex;
-        li {
-          list-style: none;
-          margin: 20px 15px;
-          font-size: 25px;
-          text-decoration: none;
-          font-size: 16px;
-          font-weight: 700;
-          a {
+    .bars-menu {
+      cursor: pointer;
+      @include screen("xlarge") {
+        display: none;
+      }
+    }
+
+    .left-right-container {
+      width: 100%;
+      display: none;
+
+      .left-nav-container,
+      .right-nav-container {
+        ul {
+          display: flex;
+          li {
+            list-style: none;
+            margin: 20px 15px;
+            font-size: 25px;
             text-decoration: none;
-            color: black;
+            font-size: 16px;
+            font-weight: 700;
+            a {
+              text-decoration: none;
+              color: black;
+            }
+            a:hover {
+              opacity: 0.7;
+            }
+            .active {
+              color: red;
+            }
           }
-          a:hover {
-            opacity: 0.7;
+        }
+      }
+
+      .left-nav-container {
+        display: flex;
+        align-items: center;
+
+        .lang-selector {
+          color: red;
+          font-weight: 700;
+          margin-right: 30px;
+          cursor: pointer;
+        }
+      }
+      @include screen("xlarge") {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &.open-nav {
+        position: absolute;
+        top: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        background-color: white;
+        border-top: 3px solid #ff0000;
+        padding: 5%;
+
+        .left-nav-container {
+          align-items: flex-start;
+          .lang-selector {
+            display: none;
           }
-          .active {
-            color: red;
+          ul {
+            width: 100%;
+            flex-direction: column-reverse;
+            :hover {
+              background-color: rgba(128, 128, 128, 0.616);
+              opacity: 1;
+            }
+            li {
+              padding: 15px;
+              border-bottom: 0.5px solid rgba(128, 128, 128, 0.616);
+            }
+          }
+        }
+        .right-nav-container {
+          ul {
+            flex-direction: column-reverse;
+            :hover {
+              width: 100%;
+              background-color: rgba(128, 128, 128, 0.616);
+              opacity: 1;
+            }
+            li {
+              padding: 15px;
+              border-bottom: 0.5px solid rgba(128, 128, 128, 0.616);
+            }
           }
         }
       }
     }
-
-    .left-nav-container {
-      display: flex;
-      align-items: center;
-
-      .lang-selector {
-        color: red;
-        font-weight: 700;
-        margin-right: 30px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  @include screen("xs") {
-    display: none;
-  }
-
-  @include screen("small") {
-    display: none;
-  }
-
-  @include screen("medium") {
-    display: none;
-  }
-
-  @include screen("lg") {
-    display: none;
   }
 }

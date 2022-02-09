@@ -40,9 +40,9 @@ const Details: React.FC<Props> = ({shipmentData}) => {
           </tr>
         </thead>
         <tbody>
-          {reducedFilteredStates.map((state) => {
+          {reducedFilteredStates.map((state, i) => {
             return (
-              <tr>
+              <tr key={i}>
                 <td>مدينة نصر</td>
                 <td>{`${new Date(state.timestamp).getDay()}/${new Date(
                   state.timestamp,
