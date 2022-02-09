@@ -1,7 +1,25 @@
+@import "src/mixins";
+
 .tracking-page-container {
   display: flex;
   flex-direction: column;
   .details-addres-comp {
     display: flex;
+
+    @include screen("xs") {
+      flex-direction: column-reverse;
+    }
+
+    @include screen("small") {
+      flex-direction: column-reverse;
+    }
+
+    @include screen("medium") {
+      flex-direction: column-reverse;
+    }
+
+    @include screen("lg") {
+      flex-direction: column-reverse;
+    }
   }
 }

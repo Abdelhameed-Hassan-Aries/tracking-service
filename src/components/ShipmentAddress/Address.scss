@@ -1,3 +1,5 @@
+@import "src/mixins";
+
 .address {
   display: flex;
   flex-direction: column;
@@ -49,5 +51,25 @@
     .right-side {
       font-size: 50px;
     }
+  }
+
+  @include screen("xs") {
+    width: fit-content;
+    align-self: flex-end;
+  }
+
+  @include screen("small") {
+    width: fit-content;
+    align-self: flex-end;
+  }
+
+  @include screen("medium") {
+    width: fit-content;
+    align-self: flex-end;
+  }
+
+  @include screen("lg") {
+    width: fit-content;
+    align-self: flex-end;
   }
 }
