@@ -70,6 +70,7 @@ header {
       }
 
       &.open-nav {
+        z-index: 2;
         position: absolute;
         top: 100%;
         display: flex;
@@ -80,6 +81,7 @@ header {
 
         .left-nav-container {
           align-items: flex-start;
+
           .lang-selector {
             display: none;
           }

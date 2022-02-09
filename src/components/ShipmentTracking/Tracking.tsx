@@ -106,119 +106,127 @@ const Tracking: React.FC<Props> = ({shipmentData}) => {
 
   return (
     <div className="tracking">
-      <div className="top-container">
-        <ul>
-          <li>
-            <div className="sub-text">موعد التسليم خلال</div>
-            <div className="text">
-              {getCorrectPromisedDate().year
-                ? getCorrectPromisedDate().promisedDate
-                : getCorrectDeliveryDate()}
-            </div>
-          </li>
-          <li>
-            <div className="sub-text">اسم التاجر</div>
-            <div className="text">SOUQ.COM</div>
-          </li>
-          <li>
-            <div className="sub-text">اخر تحديث</div>
-            <div className="text">{getLatestUpdateDate()}</div>
-          </li>
-          <li>
-            <div className="sub-text">
-              رقم الشحنة {shipmentData.TrackingNumber}
-            </div>
-            <div className="text" style={{color: deliveryClasses}}>
-              {shipmentStateTranslated[shipmentData.CurrentStatus.state]}
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div className="split-line"></div>
-      <div className="bottom-container">
-        <div className="shipment-delivery">
-          <div className="tracking-line">
-            {state === shipmentState.out_for_delivery && (
-              <div
-                className="line-image save-image"
-                style={{backgroundColor: 'red', height: '50px', width: '50px'}}
-              >
-                {save}
+      <div className="tracking-container">
+        <div className="top-container">
+          <ul>
+            <li>
+              <div className="sub-text">موعد التسليم خلال</div>
+              <div className="text">
+                {getCorrectPromisedDate().year
+                  ? getCorrectPromisedDate().promisedDate
+                  : getCorrectDeliveryDate()}
               </div>
-            )}
-            {state === shipmentState.delivered && (
+            </li>
+            <li>
+              <div className="sub-text">اسم التاجر</div>
+              <div className="text">SOUQ.COM</div>
+            </li>
+            <li>
+              <div className="sub-text">اخر تحديث</div>
+              <div className="text">{getLatestUpdateDate()}</div>
+            </li>
+            <li>
+              <div className="sub-text">
+                رقم الشحنة {shipmentData.TrackingNumber}
+              </div>
+              <div className="text" style={{color: deliveryClasses}}>
+                {shipmentStateTranslated[shipmentData.CurrentStatus.state]}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="split-line"></div>
+        <div className="bottom-container">
+          <div className="shipment-delivery">
+            <div className="tracking-line">
+              {state === shipmentState.out_for_delivery && (
+                <div
+                  className="line-image save-image"
+                  style={{
+                    backgroundColor: 'red',
+                    height: '50px',
+                    width: '50px',
+                  }}
+                >
+                  {save}
+                </div>
+              )}
+              {state === shipmentState.delivered && (
+                <div
+                  className="line-image fourth-mark"
+                  style={{backgroundColor: 'green'}}
+                >
+                  {checkMark}
+                </div>
+              )}
               <div
-                className="line-image fourth-mark"
-                style={{backgroundColor: 'green'}}
+                className="line"
+                style={{backgroundColor: deliveryClasses}}
+              ></div>
+            </div>
+            <div className="shipment-text align-self-start">تم التسليم</div>
+          </div>
+          <div className="shipment-enroute">
+            <div className="tracking-line">
+              <div
+                className="line"
+                style={{backgroundColor: deliveryClasses}}
+              ></div>
+              {state === shipmentState.out_for_delivery && (
+                <div
+                  className="line-image van-image"
+                  style={{
+                    backgroundColor: 'red',
+                    height: '50px',
+                    width: '50px',
+                  }}
+                >
+                  {shuttleVan}
+                </div>
+              )}
+              {state === shipmentState.delivered && (
+                <div
+                  className="line-image third-mark"
+                  style={{backgroundColor: 'green'}}
+                >
+                  {checkMark}
+                </div>
+              )}
+            </div>
+            <div className="shipment-text align-self-start">
+              الشحنة خرجت للتسليم
+            </div>
+          </div>
+          <div className="shipment-merchant-arrival">
+            <div className="tracking-line">
+              <div
+                className="line"
+                style={{backgroundColor: deliveryClasses}}
+              ></div>
+              <div
+                className="line-image second-mark"
+                style={{backgroundColor: deliveryClasses}}
               >
                 {checkMark}
               </div>
-            )}
-            <div
-              className="line"
-              style={{backgroundColor: deliveryClasses}}
-            ></div>
+            </div>
+            <div className="shipment-text">تم استلام الشحنة من التاجر</div>
           </div>
-          <div className="shipment-text " style={{alignSelf: 'flex-start'}}>
-            تم التسليم
-          </div>
-        </div>
-        <div className="shipment-enroute">
-          <div className="tracking-line">
-            <div
-              className="line"
-              style={{backgroundColor: deliveryClasses}}
-            ></div>
-            {state === shipmentState.out_for_delivery && (
+          <div className="shipment-creation">
+            <div className="tracking-line">
               <div
-                className="line-image van-image"
-                style={{backgroundColor: 'red', height: '50px', width: '50px'}}
-              >
-                {shuttleVan}
-              </div>
-            )}
-            {state === shipmentState.delivered && (
+                className="line"
+                style={{backgroundColor: deliveryClasses}}
+              ></div>
               <div
-                className="line-image third-mark"
-                style={{backgroundColor: 'green'}}
+                className="line-image first-mark"
+                style={{backgroundColor: deliveryClasses}}
               >
                 {checkMark}
               </div>
-            )}
-          </div>
-          <div className="shipment-text" style={{alignSelf: 'flex-start'}}>
-            الشحنة خرجت للتسليم
-          </div>
-        </div>
-        <div className="shipment-merchant-arrival">
-          <div className="tracking-line">
-            <div
-              className="line"
-              style={{backgroundColor: deliveryClasses}}
-            ></div>
-            <div
-              className="line-image second-mark"
-              style={{backgroundColor: deliveryClasses}}
-            >
-              {checkMark}
             </div>
+            <div className="shipment-text">تم انشاء الشحنة</div>
           </div>
-          <div className="shipment-text">تم استلام الشحنة من التاجر</div>
-        </div>
-        <div className="shipment-creation">
-          <div className="tracking-line">
-            <div
-              className="line"
-              style={{backgroundColor: deliveryClasses}}
-            ></div>
-            <div
-              className="line-image first-mark"
-              style={{backgroundColor: deliveryClasses}}
-            >
-              {checkMark}
-            </div>
-          </div>
-          <div className="shipment-text">تم انشاء الشحنة</div>
         </div>
       </div>
     </div>
