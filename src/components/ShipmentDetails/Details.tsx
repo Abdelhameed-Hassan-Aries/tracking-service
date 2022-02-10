@@ -44,9 +44,9 @@ const Details: React.FC<Props> = ({shipmentData}) => {
             return (
               <tr key={i}>
                 <td>مدينة نصر</td>
-                <td>{`${new Date(state.timestamp).getDay()}/${new Date(
-                  state.timestamp,
-                ).getMonth()}/${new Date(state.timestamp).getFullYear()}`}</td>
+                <td>{`${new Date(state.timestamp).getDate()}/${
+                  new Date(state.timestamp).getMonth() + 1
+                }/${new Date(state.timestamp).getFullYear()}`}</td>
                 <td>
                   {new Date(state.timestamp).toLocaleString('en-US', {
                     hour: 'numeric',
