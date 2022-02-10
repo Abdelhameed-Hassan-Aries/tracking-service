@@ -70,7 +70,7 @@ const Tracking: React.FC<Props> = ({shipmentData}) => {
   const getCorrectPromisedDate = () => {
     const year = new Date(shipmentData.PromisedDate as string).getFullYear();
     const month =
-      monthsNames[new Date(shipmentData.PromisedDate as string).getMonth() - 1];
+      monthsNames[new Date(shipmentData.PromisedDate as string).getMonth()];
     const day = new Date(shipmentData.PromisedDate as string).getDate();
     return {
       year,
@@ -81,9 +81,7 @@ const Tracking: React.FC<Props> = ({shipmentData}) => {
   const getCorrectDeliveryDate = () => {
     const year = new Date(shipmentData.CurrentStatus.timestamp).getFullYear();
     const month =
-      monthsNames[
-        new Date(shipmentData.CurrentStatus.timestamp).getMonth() - 1
-      ];
+      monthsNames[new Date(shipmentData.CurrentStatus.timestamp).getMonth()];
     const day = new Date(shipmentData.CurrentStatus.timestamp).getDate();
     return `${year} ${month} ${day}`;
   };
